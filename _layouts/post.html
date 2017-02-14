@@ -62,6 +62,26 @@ layout: default
 
                 <hr style="visibility: hidden;">
 
+				<div class="money-like" id="like-money">
+                    <div class="reward-button">赏
+                        <span class="money-code">
+                            <span class="alipay-code">
+                                <a href="javascript:;">
+                                    <img data-url="{{site.url}}/img/qr-alipay-256.png" class="alipay-img" src="data:image/png;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAsAAAABBxAREYiI/gcAAABWUDggGAAAADABAJ0BKgEAAQABABwlpAADcAD+/gbQAA=="><b>支付宝扫码打赏</b>
+                                </a>
+                            </span>
+                            <span class="wechat-code">
+                                 <img data-url="{{site.url}}/img/qr-wechat-256.png" class="wechat-img" src="data:image/png;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAsAAAABBxAREYiI/gcAAABWUDggGAAAADABAJ0BKgEAAQABABwlpAADcAD+/gbQAA=="><b>微信打赏</b>
+                            </span>
+                       </span>
+
+                    </div>
+                    <p class="money-notice">若你觉得我的文章对你有帮助,欢迎点击上方按钮对我打赏</p>
+                </div>
+                <div class="qr-code">
+                    <img src="https://encrypt.proxy.is26.com/qr?content={{site.url}}{{site.baseurl}}{{page.url}}" alt="">
+                    <p>扫描二维码,分享此文章</p>
+                </div>
                 {% if site.duoshuo_share and site.duoshuo_username %}
                 <!-- 多说 Share start -->
                 <div class="ds-share"

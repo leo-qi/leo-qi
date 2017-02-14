@@ -82,3 +82,174 @@
 .highlight .vi { color: teal; }
 .highlight .il { color: #009999; }
 .highlight .gc { color: #999; background-color: #EAF2F5; }
+
+
+.money-like
+{
+    padding: 2rem 0 3rem;
+}
+.money-like .money-notice
+{
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.4rem;
+
+    margin: 1rem auto; 
+
+    text-align: center;
+
+    color: #595959;
+}
+.money-like .reward-button
+{
+    font-size: 2.4rem;
+    line-height: 4.6rem;
+
+    position: relative;
+
+    display: block;
+
+    width: 4.6rem;
+    height: 4.6rem;
+    margin: 0 auto;
+    margin: 0 auto;
+    padding: 0;
+
+    -webkit-user-select: none; 
+    text-align: center;
+    vertical-align: middle;
+
+    color: #fff;
+    border: 1px solid #f1b60e;
+    border-radius: 50%;
+    background: #fccd60;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fccd60), color-stop(100%, #fbae12), color-stop(100%, #2989d8), color-stop(100%, #207cca));
+    background: -webkit-linear-gradient(top, #fccd60 0%, #fbae12 100%, #2989d8 100%, #207cca 100%);
+    background:         linear-gradient(to bottom, #fccd60 0%, #fbae12 100%, #2989d8 100%, #207cca 100%);
+}
+.money-like .money-code
+{
+    position: absolute;
+    top: -16rem;
+    left: 50%;
+
+    display: none;
+
+    width: 25rem;
+    height: 14rem;
+    margin-left: -12.2rem;
+    padding: 1.2rem 1.2rem 3rem;
+
+    border: 1px solid #e6e6e6;
+    background: #fff;
+    box-shadow: 0 1px 1px 1px #efefef;
+}
+.money-like .money-code span
+{
+    display: inline-block;
+
+    width: 10rem;
+    height: 12rem;
+}
+.money-like .money-code span.alipay-code
+{
+    float: left;
+}
+.money-like .money-code span.alipay-code a
+{
+    padding: 0;
+}
+.money-like .money-code span.wechat-code
+{
+    float: right;
+}
+.money-like .money-code img
+{
+    display: inline-block;
+    float: left;
+
+    width: 10rem;
+    height: 10rem;
+    margin: 0rem auto;
+
+    border: 0 none;
+}
+.money-like .money-code b
+{
+    font-size: 1.2rem;
+    line-height: 2.6rem;
+
+    display: block;
+
+    margin: 0;
+
+    text-align: center;
+
+    color: #666;
+}
+.money-like .money-code b.notice
+{
+    line-height: 2rem;
+
+    margin-top: -1rem; 
+
+    color: #999;
+}
+.money-like .money-code:after,
+.money-like .money-code:before
+{
+    position: absolute;
+
+    content: '';
+
+    border: 10px solid transparent;
+}
+.money-like .money-code:after
+{
+    bottom: -19px; 
+    left: 50%;
+
+    margin-left: -10px;
+
+    border-top-color: #fff;
+}
+.money-like .money-code:before
+{
+    bottom: -20px; 
+    left: 50%;
+
+    margin-left: -10px;
+
+    border-top-color: #e6e6e6;
+}
+
+.qr-code img
+{
+    display: block;
+
+    width: 13rem;
+    height: 13rem;
+
+    box-shadow: 0 0 1px #e3e3e3;
+}
+.qr-code img:hover,
+.qr-code img:active
+{
+    background: #e6e6e6;
+    box-shadow: 0 0 5px #e3e3e3;
+}
+
+.qr-code p
+{
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.4rem;
+
+    display: block;
+
+    margin-top: .6rem; 
+
+    text-align: center;
+
+    color: #999;
+}

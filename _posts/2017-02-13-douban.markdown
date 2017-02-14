@@ -1,13 +1,15 @@
 ---
 layout:     post
 title:      "美女都是狠角色"
-date:       2017-02-14 9:00:00
+subtitle:   " \"Hello World, Hello Blog\""
+date:       2017-02-13 9:00:00
 author:     "Leo QI"
-header-mask: 0.3
+header-img: "img/post-bg-2015.jpg"
 catalog:    true
 tags:
     - 励志鸡汤
 ---
+
 > [原文 https://www.douban.com/note/492073829/](https://www.douban.com/note/492073829/)
 
 这个标题很多人的很多文章都用过啦，但是在说到某种主题的时候，我觉得换个标题就没有这么个意思了。所以就沿用一下，有意见的请跳出来打我啊！
