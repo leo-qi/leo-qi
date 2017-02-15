@@ -34,7 +34,7 @@ anchorjs: true                          # if you want to customize anchor. check
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
 gems: [jekyll-paginate]
-
+gems: ['jekyll-lunr-js-search']
 
 
 # Markdown settings
@@ -125,3 +125,9 @@ timezone: Hongkong
 #        href: "http://wepiaofei.github.io/blog/"
 #    }
 #]
+
+lunr_search:
+# excludes: [atom.xml]
+
+# 也可以针对每个post做设置,规定其是否可以被检索到
+exclude_from_search: true
