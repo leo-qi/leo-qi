@@ -126,7 +126,7 @@ timezone: Hongkong
 #    }
 #]
 
-lunr_search:
+#lunr_search:
 # excludes: [atom.xml]
 
 # 也可以针对每个post做设置,规定其是否可以被检索到
