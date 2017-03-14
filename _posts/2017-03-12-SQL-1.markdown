@@ -19,7 +19,7 @@ tags:
 2. 建立了数据再建立，则：
 ```sql
   mysql> create database test1;  
-  ERROR 1007 (HY000): Can't create database 'test1'; database exists
+  ERROR 1007 (HY000): Can not create database 'test1'; database exists
 ```
 
 3. 显示数据库信息：
@@ -80,14 +80,13 @@ tags:
   mysql> show create table emp \G;  
   *************************** 1.row ***************************  
   Table: emp  
-  Create Table: CREATE TABLE `emp` (  
-    `ename` varchar(10) DEFAULT NULL,  
-    `hiredate` date DEFAULT NULL,  
-    `sal` decimal(10,2) DEFAULT NULL,  
-    `deptno` int(2) DEFAULT NULL  
+  Create Table: CREATE TABLE 'emp' (  
+    'ename' varchar(10) DEFAULT NULL,  
+    'hiredate' date DEFAULT NULL,  
+    'sal' decimal(10,2) DEFAULT NULL,  
+    'deptno' int(2) DEFAULT NULL  
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8  
-  1 row in set (0.00 sec)  
-
+  1 row in set (0.00 sec)
   ERROR:   
   No query specified  
 ```
@@ -102,7 +101,7 @@ tags:
 ```sql
   mysql> create table emp(ename varchar(10), hiredate date , sal decimal(10,2), deptno int(2));  
   Query OK, 0 rows affected (0.03 sec)  
-
+.
   mysql> desc emp;  
   +----------+---------------+------+-----+---------+-------+  
   | Field    | Type          | Null | Key | Default | Extra |  
@@ -113,11 +112,11 @@ tags:
   | deptno   | int(2)        | YES  |     | NULL    |       |  
   +----------+---------------+------+-----+---------+-------+  
   4 rows in set (0.00 sec)  
-
+.
   mysql> alter table emp modify ename varchar(20);  
   Query OK, 0 rows affected (0.05 sec)  
   Records: 0  Duplicates: 0  Warnings: 0  
-
+.
   mysql> desc emp;  
   +----------+---------------+------+-----+---------+-------+  
   | Field    | Type          | Null | Key | Default | Extra |  
@@ -128,11 +127,11 @@ tags:
   | deptno   | int(2)        | YES  |     | NULL    |       |  
   +----------+---------------+------+-----+---------+-------+  
   4 rows in set (0.00 sec)  
-
+.
   mysql> alter table emp add column age int(3);  
   Query OK, 0 rows affected (0.06 sec)  
   Records: 0  Duplicates: 0  Warnings: 0  
-
+.
   mysql> desc emp;  
   +----------+---------------+------+-----+---------+-------+  
   | Field    | Type          | Null | Key | Default | Extra |  
@@ -144,11 +143,11 @@ tags:
   | age      | int(3)        | YES  |     | NULL    |       |  
   +----------+---------------+------+-----+---------+-------+  
   5 rows in set (0.00 sec)  
-
+.
   mysql> alter table emp drop column age;  
   Query OK, 0 rows affected (0.06 sec)  
   Records: 0  Duplicates: 0  Warnings: 0  
-
+.
   mysql> desc emp;  
   +----------+---------------+------+-----+---------+-------+  
   | Field    | Type          | Null | Key | Default | Extra |  
@@ -158,13 +157,13 @@ tags:
   | sal      | decimal(10,2) | YES  |     | NULL    |       |  
   +----------+---------------+------+-----+---------+-------+  
   3 rows in set (0.00 sec)  
-
+.
   mysql> alter table emp change age age1 int(4);  
   ERROR 1054 (42S22): Unknown column 'age' in 'emp'  
   mysql> alter table emp change sal sal_salart int(4);  
   Query OK, 0 rows affected (0.04 sec)  
   Records: 0  Duplicates: 0  Warnings: 0  
-
+.
   mysql> desc emp;  
   +------------+-------------+------+-----+---------+-------+  
   | Field      | Type        | Null | Key | Default | Extra |  
@@ -181,11 +180,11 @@ tags:
   mysql> alter table emp add birth date after ename;  
   Query OK, 0 rows affected (0.05 sec)  
   Records: 0  Duplicates: 0  Warnings: 0  
-
+.
   mysql> alter table emp add testColumn date after ename;  
   Query OK, 0 rows affected (0.08 sec)  
   Records: 0  Duplicates: 0  Warnings: 0  
-
+.
   mysql> desc emp;  
   +------------+-------------+------+-----+---------+-------+  
   | Field      | Type        | Null | Key | Default | Extra |  
@@ -197,11 +196,11 @@ tags:
   | sal_salart | int(4)      | YES  |     | NULL    |       |  
   +------------+-------------+------+-----+---------+-------+  
   5 rows in set (0.00 sec)  
-
+.
   mysql> alter table emp modify sal_salart int(5) first;  
   Query OK, 0 rows affected (0.06 sec)  
   Records: 0  Duplicates: 0  Warnings: 0  
-
+.
   mysql> desc emp;  
   +------------+-------------+------+-----+---------+-------+  
   | Field      | Type        | Null | Key | Default | Extra |  
@@ -213,7 +212,7 @@ tags:
   | hiredate   | date        | YES  |     | NULL    |       |  
   +------------+-------------+------+-----+---------+-------+  
   5 rows in set (0.00 sec)  
-
+.
   mysql> alter table emp rename emp_test;  
   Query OK, 0 rows affected (0.01 sec)  
 ```
@@ -223,7 +222,7 @@ tags:
   mysql> alter table emp_test add column age int(3);  
   Query OK, 0 rows affected (0.05 sec)  
   Records: 0  Duplicates: 0  Warnings: 0  
-
+.
   mysql> desc emp_test;  
   +------------+-------------+------+-----+---------+-------+  
   | Field      | Type        | Null | Key | Default | Extra |  
@@ -245,12 +244,12 @@ tags:
   mysql> use test1;  
   Reading table information for completion of table and column names  
   You can turn off this feature to get a quicker startup with -A  
-
+.
   Database changed  
-
+.
   mysql> insert into test(ename,age) values('abc',3);  
   Query OK, 1 row affected (0.01 sec)  
-
+.
   mysql> select * from test;  
   +------------+-------+------------+-------+----------+------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  |  
@@ -258,11 +257,11 @@ tags:
   |       NULL | abc   | NULL       | NULL  | NULL     |    3 |  
   +------------+-------+------------+-------+----------+------+  
   1 row in set (0.00 sec)  
-
+.
   mysql> insert into test(ename,age) values('abc',3),('def',9);  
   Query OK, 2 rows affected (0.01 sec)  
   Records: 2  Duplicates: 0  Warnings: 0  
-
+.
   mysql> select * from test;  
   +------------+-------+------------+-------+----------+------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  |  
@@ -279,7 +278,7 @@ tags:
   mysql> update test set age = 8 where ename = 'def';  
   Query OK, 1 row affected (0.01 sec)  
   Rows matched: 1  Changed: 1  Warnings: 0  
-
+.
   mysql> select * from test;  
   +------------+-------+------------+-------+----------+------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  |  
@@ -289,11 +288,11 @@ tags:
   |       NULL | def   | NULL       | NULL  | NULL     |    8 |  
   +------------+-------+------------+-------+----------+------+  
   3 rows in set (0.00 sec)  
-
+.
   mysql> update test set age = 8 where ename = 'def22222222';  
   Query OK, 0 rows affected (0.01 sec)  
   Rows matched: 0  Changed: 0  Warnings: 0  
-
+.
   mysql> select * from test;  
   +------------+-------+------------+-------+----------+------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  |  
@@ -303,11 +302,11 @@ tags:
   |       NULL | def   | NULL       | NULL  | NULL     |    8 |  
   +------------+-------+------------+-------+----------+------+  
   3 rows in set (0.00 sec)  
-
+.
   mysql> update test set age = 81 where ename = 'def22222222';  
   Query OK, 0 rows affected (0.01 sec)  
   Rows matched: 0  Changed: 0  Warnings: 0  
-
+.
   mysql> select * from test;  
   +------------+-------+------------+-------+----------+------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  |  
@@ -317,11 +316,11 @@ tags:
   |       NULL | def   | NULL       | NULL  | NULL     |    8 |  
   +------------+-------+------------+-------+----------+------+  
   3 rows in set (0.00 sec)  
-
+.
   mysql> update test set age = 81 where ename = 'def';  
   Query OK, 1 row affected (0.00 sec)  
   Rows matched: 1  Changed: 1  Warnings: 0  
-
+.
   mysql> select * from test;  
   +------------+-------+------------+-------+----------+------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  |  
@@ -337,7 +336,7 @@ tags:
 ```sql
   mysql> delete from test where age = 3;  
   Query OK, 2 rows affected (0.00 sec)  
-
+.
   mysql> select * from test;  
   +------------+-------+------------+-------+----------+------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  |  
@@ -345,11 +344,11 @@ tags:
   |       NULL | def   | NULL       | NULL  | NULL     |   81 |  
   +------------+-------+------------+-------+----------+------+  
   1 row in set (0.00 sec)  
-
+.
   mysql> insert test(ename,age) values ('aaaaa',3),('aaaaa',5),('ccccc',3), ('aaaaa',9), ('ttttt',2);  
   Query OK, 5 rows affected (0.01 sec)  
   Records: 5  Duplicates: 0  Warnings: 0  
-
+.
   mysql> select * from test;  
   +------------+-------+------------+-------+----------+------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  |  
@@ -368,7 +367,7 @@ tags:
 ```sql
   mysql> alter table test rename test_col;  
   Query OK, 0 rows affected (0.01 sec)  
-
+.
   mysql> select * from test_col;  
   +------------+-------+------------+-------+----------+------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  |  
@@ -381,10 +380,10 @@ tags:
   |       NULL | ttttt | NULL       | NULL  | NULL     |    2 |  
   +------------+-------+------------+-------+----------+------+  
   6 rows in set (0.00 sec)  
-
+.
   mysql> alter table test_col rename test;  
   Query OK, 0 rows affected (0.01 sec)  
-
+.
   mysql> select * from test;  
   +------------+-------+------------+-------+----------+------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  |  
@@ -397,7 +396,7 @@ tags:
   |       NULL | ttttt | NULL       | NULL  | NULL     |    2 |  
   +------------+-------+------------+-------+----------+------+  
   6 rows in set (0.00 sec)  
-
+.
   mysql> selecdt distinct ename from test;  
   ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selecdt distinct ename from test' at line 1  
   mysql> select distinct ename from test;  
@@ -410,7 +409,7 @@ tags:
   | ttttt |  
   +-------+  
   4 rows in set (0.00 sec)  
-
+.
   mysql> select * from test where ename = 'aaaaa';  
   +------------+-------+------------+-------+----------+------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  |  
@@ -420,7 +419,7 @@ tags:
   |       NULL | aaaaa | NULL       | NULL  | NULL     |    9 |  
   +------------+-------+------------+-------+----------+------+  
   3 rows in set (0.00 sec)  
-
+.
   mysql> select * from test where age < 8;  
   +------------+-------+------------+-------+----------+------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  |  
@@ -431,7 +430,7 @@ tags:
   |       NULL | ttttt | NULL       | NULL  | NULL     |    2 |  
   +------------+-------+------------+-------+----------+------+  
   4 rows in set (0.00 sec)  
-
+.
   mysql> select * from test order by age;  
   +------------+-------+------------+-------+----------+------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  |  
@@ -444,15 +443,15 @@ tags:
   |       NULL | def   | NULL       | NULL  | NULL     |   81 |  
   +------------+-------+------------+-------+----------+------+  
   6 rows in set (0.00 sec)  
-
+.
   mysql> alter table test add column salart int (11);  
   Query OK, 6 rows affected (0.06 sec)  
   Records: 6  Duplicates: 0  Warnings: 0  
-
+.
   mysql> alter table test change salart salary int (11);  
   Query OK, 6 rows affected (0.05 sec)  
   Records: 6  Duplicates: 0  Warnings: 0  
-
+.
   mysql> select * from test;  
   +------------+-------+------------+-------+----------+------+--------+  
   | sal_salart | ename | testColumn | birth | hiredate | age  | salary |  
@@ -465,13 +464,13 @@ tags:
   |       NULL | ttttt | NULL       | NULL  | NULL     |    2 |   NULL |  
   +------------+-------+------------+-------+----------+------+--------+  
   6 rows in set (0.00 sec)  
-
+.
   mysql> insert into test(ename,age,salary) values  ('newNane1',1,100),  
       -> ('newName2',3,80),  
       -> ('newName3',5,10);  
   Query OK, 3 rows affected (0.01 sec)  
   Records: 3  Duplicates: 0  Warnings: 0  
-
+.
   mysql> select * from test;  
   +------------+----------+------------+-------+----------+------+--------+  
   | sal_salart | ename    | testColumn | birth | hiredate | age  | salary |  
@@ -487,7 +486,7 @@ tags:
   |       NULL | newName3 | NULL       | NULL  | NULL     |    5 |     10 |  
   +------------+----------+------------+-------+----------+------+--------+  
   9 rows in set (0.00 sec)  
-
+.
   mysql> select * from test order by salary;  
   +------------+----------+------------+-------+----------+------+--------+  
   | sal_salart | ename    | testColumn | birth | hiredate | age  | salary |  
@@ -503,7 +502,7 @@ tags:
   |       NULL | newNane1 | NULL       | NULL  | NULL     |    1 |    100 |  
   +------------+----------+------------+-------+----------+------+--------+  
   9 rows in set (0.00 sec)  
-
+.
   mysql> select * from test order by salary limit 6,3;  
   +------------+----------+------------+-------+----------+------+--------+  
   | sal_salart | ename    | testColumn | birth | hiredate | age  | salary |  
