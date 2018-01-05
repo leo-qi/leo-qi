@@ -1,6 +1,6 @@
 ---
 layout : post
-title : 2017-04-20：Java实现无证书的HTTPS访问
+title : Java实现无证书的HTTPS访问
 author : "Leo Qi"
 Date : 2017-03-16
 catalog: true
