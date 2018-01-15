@@ -9,7 +9,7 @@ tags:
     - Windows
 ---
 
-1. 编写Windows Service程序
+### 1. 编写Windows Service程序 ###
 Windows系统服务启动与停止需要符合特定的规范，利用Mircosoft Visual Studio 建立Windows Service程序。在.h文件中找到OnStart()和OnStop()方法，写入相关代码：
 ```C#
 public ref class WBAnalysisWinService : public System::ServiceProcess::ServiceBase
@@ -73,7 +73,7 @@ public ref class WBAnalysisWinService : public System::ServiceProcess::ServiceBa
 			process->Kill();
 		}
 ```
-2. 编写InstallShield脚本
+### 2. 编写InstallShield脚本 ###
 在installShield的Installation Designer视图中，选择Behavior and Logic->InstallScripts双击进入详情页面，选择FeatureEvents.rul，在右侧代码编辑框的上侧的第一个下拉列表框选择Move Data下的相应的自己的模块，后在第二个下拉列表框选择Installed，代码框会出现相关函数。
 ```shell
 export prototype WBAnalysis_Installed();
@@ -103,5 +103,5 @@ begin
 	endif;
 end;
 ```
-3. 与模块相关联
+### 3. 与模块相关联 ###
 选择Organization->SetUp Design，找到相应的模块在右侧详情页面，在Feature Events下的OnInstalled中选择上一步创建的函数即可。
