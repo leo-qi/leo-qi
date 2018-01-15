@@ -46,7 +46,7 @@ SSLSocketFactory sslSocketfactory = sslContext.getSocketFactory();
 4. 建立连接
   - 建立Socket连接
   ```java
-    SSLSocketsocket = (SSLSocket)sslSocketfactory.createSocket(hostAddress,httpsPort);
+    SSLSocketsocket ssf= (SSLSocket)sslSocketfactory.createSocket(hostAddress,httpsPort);
   ```
   - 建立HttpsURLConnection连接
   ```java
@@ -63,5 +63,35 @@ SSLSocketFactory sslSocketfactory = sslContext.getSocketFactory();
       HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
       HttpsURLConnection.setDefaultHostnameVerifier(hnv);
       HttpsURLConnection httpsConn = (HttpsURLConnection)url.openConnection();
-      httpsConn.setSSLSocketFactory(ssf);
+      // 此处可以不写
+      httpsConn.setSSLSocketFactory(sslSocketfactory);
+  ```
+5. 其他
+  - 有时运行时会报出错误：java.net.SocketTimeoutException: connect timed out，在建立连接之前增加如下代码：
+  ```java
+    System.setProperty("https.protocols", "TLSv1");
+  ```
+  - 可以将信任证书设计成公共方法，在建立连接之前调用trustAllHttpsCertificates();就可以使用了。
+  ```java
+    // 信任所有证书域名
+    static HostnameVerifier hv = new HostnameVerifier() {   
+        @Override  
+        public boolean verify(String hostname, SSLSession session) {  
+            return true;  
+        }  
+    };
+    // 信任所有证书
+    private static void trustAllHttpsCertificates() {  
+        try {  
+            TrustManager[] tm = {new MyX509TrustManager()};
+            SSLContext sc = SSLContext.getInstance("SSL");
+            sc.init(null, tm, null);  
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+        } catch (NoSuchAlgorithmException e) {  
+            e.printStackTrace();  
+        } catch (KeyManagementException e) {  
+            e.printStackTrace();  
+        }  
+    }
   ```
