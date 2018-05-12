@@ -1,0 +1,74 @@
+---
+layout : post
+title : Win32编程开启多线程
+author : "Leo Qi"
+Date : 2018-03-12
+catalog: true
+tags:
+    - Windows
+    - 多线程
+---
+
+### 1. 示例 ###
+需要用dll去实现更新数据库数据，但是数据库的数据量非常大，更新过程非常缓慢，通过多线程的方式进行更新数据。
+对C++及Windows函数库不是很熟悉，记录一下，方便以后学习和参考。
+```C#
+int ExecSQL_U9(LPSTR path, LPSTR server, LPSTR user, LPSTR pwd, int DBType)
+{
+	TCHAR *u9Sqls[] = 
+	{
+		_T("***.sql"),_T("***.sql"),
+		_T("***.sql"),_T("***.sql"),
+		_T("***.sql"),_T("***.sql"),
+		_T("***.sql"),_T("***.sql"),
+		_T("***.sql"),_T("***.sql"),
+		_T("***.sql"),_T("***.sql")
+	};
+	TCHAR cmdLine[MAX_PATH] = {0};
+	int size = _countof(u9Sqls);
+	HANDLE hThead[12];
+	
+	try
+	{
+		memset(cmdLine, 0, MAX_PATH);
+
+		// 创建线程执行更新数据库操作
+		for (int i = 0; i < size; i++)
+		{
+			U9SQL_PARAM* pU9Sql = new U9SQL_PARAM;
+			pU9Sql->strCmdLine.Format(_T("osql -S %s -U %s -P %s -i %s"), server, user, pwd, u9Sqls[i]);
+			pU9Sql->strPath = path;
+			hThead[i] = CreateThread(NULL, 0, U9Thread, pU9Sql, 0, NULL);
+			if(hThead[i] == NULL)
+			{
+				WriteDebug(_T("ExecSQL_U9 FAILED!"));
+				return 0;
+			}
+		}
+
+		// 等待线程结束 
+		WaitForMultipleObjects(size, hThead,true,INFINITE);
+
+		// 获取线程执行结果
+		for (int j = 0; j < size; j++) 
+		{
+			GetExitCodeThread(hThead[j], &dwExternExitCode);
+			if (dwExternExitCode != 0) 
+			{
+				WriteDebug(_T("ExecSQL_U9 FAILED!"));
+				return 0;
+			}
+			CloseHandle(hThead[j]);
+		}
+		WriteDebug(_T("ExecSQL_U9 SUCCESS!"));
+		return 1;
+	}
+	catch (...)
+	{
+		WriteDebug(_T("Some exception occur in ExecSQL_U9."));
+		return 0;
+	}
+
+	return 0;
+}
+```
